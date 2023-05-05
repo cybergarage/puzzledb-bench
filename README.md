@@ -8,3 +8,11 @@ PuzzleDB is a high-performance and lightweight embedded database program written
 In order to showcase its speed and efficiency, we have developed a benchmark program that measures the performance of PuzzleDB-Go against other popular database programs. 
 
 This benchmark program is open-source and available for download on our GitHub page. We invite developers and enthusiasts to use this program to evaluate PuzzleDB-Go and compare its performance to other database programs.
+
+# Benchmark Utilities
+
+This repository provides benchmark utilities to compare the performance of the official Docker image with PuzzleDB.
+
+- [redis-bench](redis-bench)
+
+The performance results of these benchmark commands are outputted to the `log` directory.

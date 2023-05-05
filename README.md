@@ -3,7 +3,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/puzzledb-go) [![Go](https://github.com/cybergarage/puzzledb-go/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/puzzledb-go/actions/workflows/make.yml) [![Go Reference](https://pkg.go.dev/badge/github.com/cybergarage/puzzledb-go.svg)](https://pkg.go.dev/github.com/cybergarage/puzzledb-go)
 
 
-PuzzleDB is a high-performance and lightweight embedded database program written in Go. It provides a fast and reliable solution for storing and accessing large amounts of data in a variety of applications. 
+[PuzzleDB](https://github.com/cybergarage/puzzledb-go) is a high-performance and lightweight embedded database program written in Go. It provides a fast and reliable solution for storing and accessing large amounts of data in a variety of applications. 
 
 In order to showcase its speed and efficiency, we have developed a benchmark program that measures the performance of PuzzleDB-Go against other popular database programs. 
 

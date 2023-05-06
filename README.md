@@ -14,5 +14,7 @@ This benchmark program is open-source and available for download on our GitHub p
 This repository provides benchmark utilities to compare the performance of the official Docker image with PuzzleDB.
 
 - [redis-bench](redis-bench)
+- [mongo-bench](mongo-bench)
+- [mysql-bench](mysql-bench)
 
 The performance results of these benchmark commands are outputted to the `log` directory.

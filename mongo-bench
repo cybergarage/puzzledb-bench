@@ -18,6 +18,8 @@ docker_images=(
 "cybergarage/puzzledb:latest"
 )
 
+source ./ycsb-setup
+
 for n in {1..1}
 do
     docker run -d -p 27017:27017 ${docker_images[$n]}

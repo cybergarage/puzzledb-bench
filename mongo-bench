@@ -22,9 +22,9 @@ source ./ycsb-setup
 
 for n in {1..1}
 do
-    docker run -d -p 27017:27017 ${docker_images[$n]}
-    sleep 5
     DOCKER_IMAGE_NAME=$(echo ${docker_images[$n]} | sed 's/\//-/g;s/:/-/')
+    docker run -d -p 27017:27017 --name ${DOCKER_IMAGE_NAME} ${docker_images[$n]}
+    sleep 5
     DATE=$(date '+%Y-%m-%d')
     LOG_FILE_NAME="log/mongo-${DATE}-${DOCKER_IMAGE_NAME}.log"
     YCSB_PARAMS="-s -P ${YCSB_ROOT}/workloads/workloada"

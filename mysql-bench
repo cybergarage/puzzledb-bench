@@ -35,7 +35,7 @@ fi
 for n in {1..1}
 do
     DOCKER_IMAGE_NAME=$(echo ${docker_images[$n]} | sed 's/\//-/g;s/:/-/')
-    docker run -d -p 27017:27017 ${docker_images[$n]} --name ${DOCKER_IMAGE_NAME}
+    docker run -d -p 27017:27017 --name ${DOCKER_IMAGE_NAME} ${docker_images[$n]}
     sleep 5
     mysql -h 127.0.0.1 -e "CREATE DATABASE IF NOT EXISTS ycsb; USE ycsb; CREATE TABLE IF NOT EXISTS usertable (YCSB_KEY VARCHAR(255) PRIMARY KEY, FIELD0 TEXT, FIELD1 TEXT, FIELD2 TEXT, FIELD3 TEXT, FIELD4 TEXT, FIELD5 TEXT, FIELD6 TEXT, FIELD7 TEXT, FIELD8 TEXT, FIELD9 TEXT);"
     DATE=$(date '+%Y-%m-%d')

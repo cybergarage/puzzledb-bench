@@ -20,4 +20,7 @@
 # Go workspace file
 go.work
 
+ycsb-0.17.0/
+ycsb-0.17.0*
+.DS_Store
 log/*.log

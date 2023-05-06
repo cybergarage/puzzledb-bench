@@ -40,7 +40,7 @@ do
     DOCKER_IMAGE_NAME=$(echo ${docker_images[$n]} | sed 's/\//-/g;s/:/-/')
     DATE=$(date '+%Y-%m-%d')
     LOG_FILE_NAME="log/mysql-${DATE}-${DOCKER_IMAGE_NAME}.log"
-    YCSB_PARAMS="jdbc -s -P ${YCSB_ROOT}/workloads/workloada"
+    YCSB_PARAMS="jdbc -s -P ${YCSB_ROOT}/workloads/workloada -P ${YCSB_DB_PROPERTIES}"
     ${YCSB_ROOT}/bin/ycsb.sh load ${YCSB_PARAMS} > ${LOG_FILE_NAME}
     ${YCSB_ROOT}/bin/ycsb.sh run  ${YCSB_PARAMS} >> ${LOG_FILE_NAME}
     CONTAINER_ID=$(docker ps -a --filter "ancestor=${docker_images[$n]}" --format "{{.ID}}")

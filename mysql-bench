@@ -14,7 +14,7 @@
 # limitations under the License.
 
 MYSQL_CONNECTOR=mysql-connector-j-8.0.33.jar
-YCSB_DB_PROPERTIES=`pwd`/db.properties
+YCSB_DB_PROPERTIES=`pwd`/mysql.properties
 
 docker_images=(
 "mysql:8.0.33"

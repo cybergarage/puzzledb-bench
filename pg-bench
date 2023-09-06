@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PG_CONNECTOR=postgresql-42.6.0.jar
-YCSB_DB_PROPERTIES=`pwd`/pb.properties
+YCSB_DB_PROPERTIES=`pwd`/pg.properties
 
 docker_images=(
 "postgres:15.4"

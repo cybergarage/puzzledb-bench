@@ -13,23 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-MYSQL_CONNECTOR=mysql-connector-j-8.0.33.jar
-YCSB_DB_PROPERTIES=`pwd`/db.properties
+PG_CONNECTOR=postgresql-42.6.0.jar
+YCSB_DB_PROPERTIES=`pwd`/pb.properties
 
 docker_images=(
-"mysql:8.0.33"
+"postgres:15.4"
 "cybergarage/puzzledb:latest"
 )
 
 source ./ycsb-setup
 
-if [ ! -f ${MYSQL_CONNECTOR} ]; then
-  echo "${MYSQL_CONNECTOR} is not found"
-  exit
+if [ ! -f ${PG_CONNECTOR} ]; then
+  wget https://jdbc.postgresql.org/download/${PG_CONNECTOR}
 fi
 
-if [ ! -f ${YCSB_JDBC_LIB}/${MYSQL_CONNECTOR} ]; then
-  cp ${MYSQL_CONNECTOR} ${YCSB_JDBC_LIB}
+if [ ! -f ${YCSB_JDBC_LIB}/${PG_CONNECTOR} ]; then
+  cp ${PG_CONNECTOR} ${YCSB_JDBC_LIB}
 fi
 
 for n in {1..1}
@@ -37,7 +36,7 @@ do
     DOCKER_IMAGE_NAME=$(echo ${docker_images[$n]} | sed 's/\//-/g;s/:/-/')
     docker run -d -p 27017:27017 --name ${DOCKER_IMAGE_NAME} ${docker_images[$n]}
     sleep 5
-    mysql -h 127.0.0.1 -e "CREATE DATABASE IF NOT EXISTS ycsb; USE ycsb; CREATE TABLE IF NOT EXISTS usertable (YCSB_KEY VARCHAR(255) PRIMARY KEY, FIELD0 TEXT, FIELD1 TEXT, FIELD2 TEXT, FIELD3 TEXT, FIELD4 TEXT, FIELD5 TEXT, FIELD6 TEXT, FIELD7 TEXT, FIELD8 TEXT, FIELD9 TEXT);"
+    ./pg-setup
     DATE=$(date '+%Y-%m-%d')
     LOG_FILE_NAME="log/mysql-${DATE}-${DOCKER_IMAGE_NAME}.log"
     YCSB_PARAMS="jdbc -s -P ${YCSB_ROOT}/workloads/workloada -P ${YCSB_DB_PROPERTIES}"

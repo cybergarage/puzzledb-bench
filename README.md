@@ -16,5 +16,6 @@ This repository provides benchmark utilities to compare the performance of the o
 - [redis-bench](redis-bench)
 - [mongo-bench](mongo-bench)
 - [mysql-bench](mysql-bench)
+- [pg-bench](pg-bench)
 
 The performance results of these benchmark commands are outputted to the `log` directory.

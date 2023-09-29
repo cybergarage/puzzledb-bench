@@ -26,7 +26,8 @@ do
     DATE=$(date '+%Y-%m-%d')
     LOG_FILE_NAME="log/pg-${DATE}-${DOCKER_IMAGE_NAME}.log"
     ./pgbench-init
-    ./pgbench-run > ${LOG_FILE_NAME}
+    ./pgbench-run
+    mv pgbench.log ${LOG_FILE_NAME}
     CONTAINER_ID=$(docker ps -a --filter "ancestor=${docker_images[$n]}" --format "{{.ID}}")
     docker stop $CONTAINER_ID
     docker rm $CONTAINER_ID

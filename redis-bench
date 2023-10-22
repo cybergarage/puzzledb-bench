@@ -18,13 +18,14 @@ docker_images=(
 "cybergarage/puzzledb:latest"
 )
 
+DATE=$(date '+%Y-%m-%d')
+
 for n in {0..1}
 do
     DOCKER_IMAGE_NAME=$(echo ${docker_images[$n]} | sed 's/\//-/g;s/:/-/')
     docker run -d -p 6379:6379 --name ${DOCKER_IMAGE_NAME} ${docker_images[$n]}
     sleep 5
-    LOG_FILE_NAME="log/redis-${DATE}-${DOCKER_IMAGE_NAME}.log"
-    DATE=$(date '+%Y-%m-%d')
+    LOG_FILE_NAME="log/redis-benchmark-${DATE}-${DOCKER_IMAGE_NAME}.log"
     redis-benchmark -t get,set -n 10000 > ${LOG_FILE_NAME}
     CONTAINER_ID=$(docker ps -a --filter "ancestor=${docker_images[$n]}" --format "{{.ID}}")
     docker stop $CONTAINER_ID

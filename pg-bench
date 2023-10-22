@@ -18,13 +18,15 @@ docker_images=(
 "cybergarage/puzzledb:latest"
 )
 
+DATE=$(date '+%Y-%m-%d')
+HOSTNAME=$(hostname)
+
 for n in {0..1}
 do
     DOCKER_IMAGE_NAME=$(echo ${docker_images[$n]} | sed 's/\//-/g;s/:/-/')
     docker run -d -p 5432:5432 --name ${DOCKER_IMAGE_NAME} ${docker_images[$n]}
     sleep 5
-    DATE=$(date '+%Y-%m-%d')
-    LOG_FILE_NAME="log/pg-${DATE}-${DOCKER_IMAGE_NAME}.log"
+    LOG_FILE_NAME="log/pg-${DATE}-${HOSTNAME}-${DOCKER_IMAGE_NAME}.log"
     ./pgbench-init
     ./pgbench-run > ${LOG_FILE_NAME}
     CONTAINER_ID=$(docker ps -a --filter "ancestor=${docker_images[$n]}" --format "{{.ID}}")

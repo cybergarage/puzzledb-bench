@@ -21,6 +21,9 @@ docker_images=(
 "cybergarage/puzzledb:latest"
 )
 
+DATE=$(date '+%Y-%m-%d')
+HOSTNAME=$(hostname)
+
 source ./ycsb-setup
 
 if [ ! -f ${MYSQL_CONNECTOR} ]; then

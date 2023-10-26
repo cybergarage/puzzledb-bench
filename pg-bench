@@ -30,4 +30,5 @@ do
     CONTAINER_ID=$(docker ps -a --filter "ancestor=${docker_images[$n]}" --format "{{.ID}}")
     docker stop $CONTAINER_ID
     docker rm $CONTAINER_ID
+    sleep 5
 done

@@ -14,7 +14,7 @@
 # limitations under the License.
 
 docker_images=(
-"postgres:16.0"
+"postgres:14.9"
 "cybergarage/puzzledb:latest"
 )
 

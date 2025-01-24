@@ -12,3 +12,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+TABLES=5
+TABLE_SIZE=10000
+HOST=localhost
+
+USER=sysbench
+DB=sysbench
+
+PGSQL_HOST=${HOST}
+PGSQL_PORT=5433
+PGPSQL_USER=${USER}
+PGSQL_DB=${DB}
+
+CMDS=("prepare" "run")
+for CMD in ${CMDS[@]}
+do
+  sysbench oltp_read_write --db-driver=pgsql --tables=${TABLES} --table-size=${TABLE_SIZE} --pgsql-host=${PGSQL_HOST} --pgsql-port=${PGSQL_PORT} --pgsql-user=${PGPSQL_USER} --pgsql-db=${PGSQL_DB} ${CMD}
+done

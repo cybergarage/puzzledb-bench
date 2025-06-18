@@ -25,7 +25,7 @@ PGSQL_PORT=5433
 PGPSQL_USER=${USER}
 PGSQL_DB=${DB}
 
-CMDS=("prepare" "run")
+CMDS=("prepare" "run" "cleanup")
 for CMD in ${CMDS[@]}
 do
   sysbench oltp_read_write --db-driver=pgsql --tables=${TABLES} --table-size=${TABLE_SIZE} --pgsql-host=${PGSQL_HOST} --pgsql-port=${PGSQL_PORT} --pgsql-user=${PGPSQL_USER} --pgsql-db=${PGSQL_DB} ${CMD}
